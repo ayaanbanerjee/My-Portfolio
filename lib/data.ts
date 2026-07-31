@@ -44,7 +44,8 @@ export const education = [
   {
     degree: "B.Tech — Computer Science and Engineering",
     school: "College of Engineering and Management, Kolaghat · MAKAUT University",
-    period: "Sep 2023 — Present",
+    period: "Sep 2023 — Jul 2026",
+    note: "CGPA: 7.11",
   },
   {
     degree: "Diploma — Computer Science and Technology",
