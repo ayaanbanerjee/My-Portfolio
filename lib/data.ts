@@ -16,12 +16,12 @@ export const personal = {
 };
 
 export const skills = {
-  Languages: ["JavaScript (ES6+)", "Java"],
-  Fundamentals: ["OOP", "Data Structures & Algorithms", "SDLC"],
-  Frontend: ["React.js", "Next.js", "Tailwind CSS", "HTML5", "CSS3", "Responsive Design"],
+  "Languages": ["JavaScript (ES6+)", "Java", "Python"],
+  "Fundamentals": ["OOP", "Data Structures & Algorithms", "SDLC"],
+  "Frontend": ["React.js", "Next.js", "Tailwind CSS", "HTML5", "CSS3", "Responsive Design"],
   "Backend & APIs": ["Node.js", "Express.js", "RESTful API Design", "JWT Auth"],
-  Databases: ["MongoDB", "SQL", "MySQL"],
-  "Tools & Practice": ["Git", "GitHub", "GitLab", "Agile / Sprint Workflows", "Code Review", "VS Code", "Render"],
+  "Databases": ["MongoDB", "SQL", "MySQL", "PostgreSQL"],
+  "Tools & Devops": ["Git", "GitHub", "GitLab", "CI/CD", "Github Action","GCP", "Agile / Sprint Workflows" ],
 };
 
 export const experience = [
@@ -80,9 +80,10 @@ export const projects: Project[] = [
       "Integrated state management for cart and session handling",
     ],
     stack: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "JWT"],
-    status: "Ongoing",
-    period: "Ongoing",
-    // No live demo or repository link is published in the CV for this project yet.
+    status: "Completed",
+    period: "Aug 2026",
+    liveUrl: "https://carry-core.vercel.app/",
+    
   },
   {
     slug: "employee-management-system",
