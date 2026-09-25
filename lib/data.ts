@@ -21,7 +21,7 @@ export const skills = {
   "Frontend": ["React.js", "Next.js", "Tailwind CSS", "HTML5", "CSS3", "Responsive Design"],
   "Backend & APIs": ["Node.js", "Express.js", "RESTful API Design", "JWT Auth"],
   "Databases": ["MongoDB", "SQL", "MySQL", "PostgreSQL"],
-  "Tools & Devops": ["Git", "GitHub", "GitLab", "CI/CD", "Github Action","GCP", "Agile / Sprint Workflows" ],
+  "Tools & Devops": ["Git", "GitHub", "GitLab", "CI/CD", "Docker", "GitHub Actions", "GCP", "Agile / Sprint Workflows" ],
 };
 
 export const experience = [
@@ -69,6 +69,23 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "syncchat",
+    name: "SyncChat — Real-Time Messaging Application",
+    description:
+      "A real-time messaging platform built for instant communication, featuring secure access, live conversation updates, and a responsive user experience across devices.",
+    features: [
+      "Real-time message delivery and live chat interactions for seamless conversation flow",
+      "Secure authentication and session handling for protected user access",
+      "Responsive interface designed for desktop and mobile users with clean, focused UX",
+      "Modern full-stack architecture with real-time communication support and scalable data handling",
+      "Deployment-ready workflow with Docker containerization and CI/CD automation practices",
+    ],
+    stack: ["React.js", "Next.js", "Node.js", "Express.js", "MongoDB", "Socket.IO", "Tailwind CSS"],
+    status: "Completed",
+    period: "Jul 2026",
+    liveUrl: "https://sync-chat-one.vercel.app/",
+  },
+  {
     slug: "packverse",
     name: "PackVerse",
     description:
@@ -78,8 +95,9 @@ export const projects: Project[] = [
       "RESTful services and MongoDB data models designed for product catalogue and order management",
       "Reusable, tested components with client-side validation",
       "Integrated state management for cart and session handling",
+      "Containerized deployment workflows with Docker and CI/CD practices for smoother delivery",
     ],
-    stack: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "JWT"],
+    stack: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "JWT", "Docker", "CI/CD"],
     status: "Completed",
     period: "Aug 2026",
     liveUrl: "https://carry-core.vercel.app/",
