@@ -55,14 +55,42 @@ function CopyRow({
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Portfolio inquiry from ${form.name || "a visitor"}`);
-    const body = encodeURIComponent(
-      `${form.message}\n\n— ${form.name} (${form.email})`
-    );
-    window.location.href = `mailto:${personal.email}?subject=${subject}&body=${body}`;
+    setStatus("sending");
+
+    const subject = `Portfolio inquiry from ${form.name || "a visitor"}`;
+    const messageBody = `${form.message}\n\n— ${form.name} (${form.email})`;
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${personal.email}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          _subject: subject,
+          _captcha: "false",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Email service rejected the request");
+      }
+
+      setForm({ name: "", email: "", message: "" });
+      setStatus("success");
+    } catch {
+      const mailtoLink = `mailto:${personal.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(messageBody)}`;
+      window.location.href = mailtoLink;
+      setStatus("error");
+    }
   };
 
   return (
@@ -172,11 +200,15 @@ export default function Contact() {
                 placeholder="Tell me a bit about the project or role..."
               />
             </div>
-            <MagneticButton type="submit" variant="solid" className="w-full md:w-auto">
-              Send Message <Send size={15} />
+            <MagneticButton type="submit" variant="solid" className="w-full md:w-auto" disabled={status === "sending"}>
+              {status === "sending" ? "Sending..." : "Send Message"} <Send size={15} />
             </MagneticButton>
             <p className="text-xs text-ink-faint">
-              Opens your email client with this message pre-filled to {personal.email}.
+              {status === "success"
+                ? "Your message was sent successfully."
+                : status === "error"
+                  ? "The direct email service is unavailable, so your mail app was opened instead."
+                  : `Opens your email client with this message pre-filled to ${personal.email}.`}
             </p>
           </motion.form>
         </div>

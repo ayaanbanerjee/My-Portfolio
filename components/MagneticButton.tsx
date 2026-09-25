@@ -15,6 +15,7 @@ type MagneticButtonProps = {
   rel?: string;
   type?: "button" | "submit";
   download?: boolean | string;
+  disabled?: boolean;
 };
 
 export default function MagneticButton({
@@ -27,6 +28,7 @@ export default function MagneticButton({
   rel,
   type = "button",
   download,
+  disabled = false,
 }: MagneticButtonProps) {
   const { ref, handleMouseMove, handleMouseLeave } = useMagnetic<HTMLDivElement>(0.25);
 
@@ -60,7 +62,7 @@ export default function MagneticButton({
   }
 
   return (
-    <button type={type} onClick={onClick} className="inline-block">
+    <button type={type} onClick={onClick} disabled={disabled} className="inline-block disabled:cursor-not-allowed disabled:opacity-60">
       {content}
     </button>
   );
